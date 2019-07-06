@@ -7,18 +7,31 @@ export class WordsPractice extends React.Component<any,any> {
         axios.get(`./weeklyWords.json`)
         .then(res => {
             console.log(res);
-            const words = res.data;
-            this.setState({ words });
+            const weeklyWords = res.data;
+
+            this.setState({ weeklyWords, availableDates: weeklyWords.map((w: any) => w.weekDate) });
         })
     }
 
-    render() {
+    render() {        
+        if (!this.state || !this.state.weeklyWords){
+            return (<div>
+                Loading...
+            </div>);            
+        }
 
-        return (<div>
-                <ul>
-                    {this.state && this.state.words && this.state.words.map((w: any) => this.presentWord(w))}
+        const firstWords = this.state.weeklyWords[0].words;
+
+        return (
+            <div>
+                <ul style={{listStyleType: 'none'}}>
+                    {firstWords.map((w: any) => this.presentWord(w))}
                 </ul>
-            </div>);
+                <div>
+                    <button>Start Test!</button>
+                </div>
+            </div>            
+        );        
     }
 
     presentWord(wordObject: any){

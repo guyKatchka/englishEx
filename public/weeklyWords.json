@@ -1,14 +1,44 @@
 [
     {
-        "eng": "test",
-        "heb": "טסט"
+        "weekDate": "2019-07-06T08:15:30.000Z",
+        "words": [
+            {
+                "eng": "test",
+                "heb": "טסט"
+            },
+            {
+                "eng": "two",
+                "heb": "שתיים"
+            },
+            {
+                "eng": "tree",
+                "heb": "עץ"
+            },
+            {
+                "eng": "apple",
+                "heb": "תפוח"
+            }
+        ]
     },
     {
-        "eng": "two",
-        "heb": "שתיים"
-    },
-    {
-        "eng": "tree",
-        "heb": "עץ"
-    }
+        "weekDate": "2019-07-01T08:15:30.000Z",
+        "words": [
+            {
+                "eng": "test2",
+                "heb": "2טסט"
+            },
+            {
+                "eng": "other",
+                "heb": "אחר"
+            },
+            {
+                "eng": "flower",
+                "heb": "פרח"
+            },
+            {
+                "eng": "tomato",
+                "heb": "עגבניה"
+            }
+        ]
+    }    
 ]
