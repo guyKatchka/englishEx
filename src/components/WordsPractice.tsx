@@ -1,5 +1,7 @@
 import React from 'react';
 import axios from 'axios';
+import {renderWordsList} from './WordsList';
+import { WordsTest } from './WordsTest';
 export class WordsPractice extends React.Component<any,any> {
 
     constructor(props: any){
@@ -9,7 +11,12 @@ export class WordsPractice extends React.Component<any,any> {
             console.log(res);
             const weeklyWords = res.data;
 
-            this.setState({ weeklyWords, availableDates: weeklyWords.map((w: any) => w.weekDate) });
+            this.setState(
+                { 
+                    weeklyWords, 
+                    availableDates: weeklyWords.map((w: any) => w.weekDate),
+                    isTesting: false
+                });
         })
     }
 
@@ -20,25 +27,31 @@ export class WordsPractice extends React.Component<any,any> {
             </div>);            
         }
 
-        const firstWords = this.state.weeklyWords[0].words;
+        if (this.state.isTesting){
+            return(
+                <WordsTest words={this.state.weeklyWords[0]}></WordsTest>
+            )
+        }
 
+        const latestWordsListPresentation = renderWordsList(this.state.weeklyWords[0].words);
+        const previousWords = renderWordsList(this.state.weeklyWords[1].words);
         return (
             <div>
-                <ul style={{listStyleType: 'none'}}>
-                    {firstWords.map((w: any) => this.presentWord(w))}
-                </ul>
+                <h2>This week words:</h2>
+                <p>{this.state.weeklyWords[0].weekDate}</p>
+                {latestWordsListPresentation}
                 <div>
-                    <button>Start Test!</button>
+                    <button onClick={() => this.startTest()}>Start Test!</button>
                 </div>
+                <h3>Previous words:</h3>
+                <p>{this.state.weeklyWords[1].weekDate}</p>
+                {previousWords}
             </div>            
         );        
     }
-
-    presentWord(wordObject: any){
-        return (
-            <li key={wordObject.eng}>
-                {wordObject.eng} - {wordObject.heb}
-            </li>
-        )
+    
+    startTest = () => {
+        console.log(" setting test to true");
+        this.setState({isTesting: true});
     }
 }
