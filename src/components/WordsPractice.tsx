@@ -7,16 +7,17 @@ export class WordsPractice extends React.Component<any,any> {
 
     constructor(props: any){
         super(props);
+        this.state = {};
         axios.get(`./weeklyWords.json`)
         .then(res => {
-            console.log(res);
             const weeklyWords = res.data;
 
             this.setState(
                 { 
                     weeklyWords, 
                     availableDates: weeklyWords.map((w: any) => w.weekDate),
-                    isTesting: false
+                    isTesting: false,
+                    testResultsHistory: []
                 });
         })
     }
@@ -30,7 +31,7 @@ export class WordsPractice extends React.Component<any,any> {
 
         if (this.state.isTesting && this.state.questions){
             return(
-                <WordsTest questions={this.state.questions}></WordsTest>
+                <WordsTest questions={this.state.questions} onTestEnd={(testResults:any) => this.endTest(testResults)}></WordsTest>
             )
         }
 
@@ -54,6 +55,13 @@ export class WordsPractice extends React.Component<any,any> {
     startTest = () => {
         const questions = this.buildQuestions(this.state.weeklyWords[0].words);
         this.setState({isTesting: true, questions});
+    }
+
+    endTest = (testResults:any) => {
+        let testResultsHistory = this.state.testResultsHistory.splice();
+        testResultsHistory.push(testResults);
+        this.setState({ isTesting: false, testResultsHistory});
+        console.log(this.state);
     }
 
     buildQuestions(words: any){
