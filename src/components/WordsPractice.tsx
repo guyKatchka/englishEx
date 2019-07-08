@@ -1,7 +1,8 @@
 import React from 'react';
 import axios from 'axios';
 import {renderWordsList} from './WordsList';
-import { WordsTest } from './WordsTest';
+import { WordsTest, TestQuestion } from './WordsTest';
+import { shuffleArray } from '../utils/utils';
 export class WordsPractice extends React.Component<any,any> {
 
     constructor(props: any){
@@ -27,9 +28,9 @@ export class WordsPractice extends React.Component<any,any> {
             </div>);            
         }
 
-        if (this.state.isTesting){
+        if (this.state.isTesting && this.state.questions){
             return(
-                <WordsTest words={this.state.weeklyWords[0]}></WordsTest>
+                <WordsTest questions={this.state.questions}></WordsTest>
             )
         }
 
@@ -51,7 +52,26 @@ export class WordsPractice extends React.Component<any,any> {
     }
     
     startTest = () => {
-        console.log(" setting test to true");
-        this.setState({isTesting: true});
+        const questions = this.buildQuestions(this.state.weeklyWords[0].words);
+        this.setState({isTesting: true, questions});
+    }
+
+    buildQuestions(words: any){
+        let questions :Array<TestQuestion> = [];
+
+        // build english to hebrew questions
+        for (let i=0; i < words.length; i++){
+            const englishWordToTranslate = words[i].eng;
+            const correctHebrewTranslation = words[i].heb;
+
+
+            let otherOptions : Array<string> = words.map((w :any) => w.heb); // get all hebrew words                                
+            otherOptions.splice(i, 1); // remove the correct translation
+            otherOptions = shuffleArray(otherOptions);
+            otherOptions.splice(3); // take only 3 options
+            questions.push(new TestQuestion(englishWordToTranslate, correctHebrewTranslation, otherOptions));
+        }
+
+        return questions;
     }
 }
