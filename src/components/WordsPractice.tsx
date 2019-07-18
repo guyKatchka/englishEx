@@ -1,21 +1,42 @@
 import React from 'react';
+import Moment from 'react-moment';
 import axios from 'axios';
-import {renderWordsList} from './WordsList';
-import { WordsTest, TestQuestion } from './WordsTest';
+import Button from 'react-bootstrap/Button';
+import {renderWordsList, WordsListByDates} from './WordsList';
+import { WordsTest } from './WordsTest';
 import { shuffleArray } from '../utils/utils';
-export class WordsPractice extends React.Component<any,any> {
+import { TestQuestion } from './TestQuestion';
+import { WeeklyWordsObject, PracticeWord } from '../Interfaces/words-interfaces';
+
+export interface WordsPracticeState{
+    weeklyWords: Array<WeeklyWordsObject>;
+    availableDates: Array<Date>;
+    isTesting: boolean;
+    testResultsHistory: Array<any>;
+    questions: Array<any>;
+    showPreviousWords: boolean;
+}
+
+export class WordsPractice extends React.Component<any,WordsPracticeState> {
 
     constructor(props: any){
         super(props);
-        this.state = {};
+        this.state = {
+            weeklyWords: [],
+            availableDates: [],
+            isTesting: false,
+            testResultsHistory: [],
+            questions: [],
+            showPreviousWords: false
+        };
         axios.get(`./weeklyWords.json`)
         .then(res => {
-            const weeklyWords = res.data;
+            const weeklyWords : Array<WeeklyWordsObject> = res.data;
 
             this.setState(
                 { 
                     weeklyWords, 
-                    availableDates: weeklyWords.map((w: any) => w.weekDate),
+                    availableDates: weeklyWords.map((w: WeeklyWordsObject) => w.weekDate),
                     isTesting: false,
                     testResultsHistory: []
                 });
@@ -34,22 +55,20 @@ export class WordsPractice extends React.Component<any,any> {
                 <WordsTest questions={this.state.questions} onTestEnd={(testResults:any) => this.endTest(testResults)}></WordsTest>
             )
         }
-
-        const latestWordsListPresentation = renderWordsList(this.state.weeklyWords[0].words);
-        const previousWords = renderWordsList(this.state.weeklyWords[1].words);
+        
         return (
             <div>
-                <h2>This week words:</h2>
-                <p>{this.state.weeklyWords[0].weekDate}</p>
-                {latestWordsListPresentation}
+                <WordsListByDates weeklyWords={this.state.weeklyWords} showPreviousWords={this.state.showPreviousWords}></WordsListByDates>                
                 <div>
-                    <button onClick={() => this.startTest()}>Start Test!</button>
-                </div>
-                <h3>Previous words:</h3>
-                <p>{this.state.weeklyWords[1].weekDate}</p>
-                {previousWords}
+                    <Button variant="outline-primary" onClick={() => this.startTest()}>Start Test!</Button>
+                    <Button variant="outline-secondary" onClick={() => this.showPreviousWords()}>Show previous words</Button>
+                </div>                
             </div>            
-        );        
+        );                
+    }
+
+    showPreviousWords = () => {
+        this.setState({showPreviousWords: true})
     }
     
     startTest = () => {
@@ -58,13 +77,12 @@ export class WordsPractice extends React.Component<any,any> {
     }
 
     endTest = (testResults:any) => {
-        let testResultsHistory = this.state.testResultsHistory.splice();
-        testResultsHistory.push(testResults);
-        this.setState({ isTesting: false, testResultsHistory});
-        console.log(this.state);
+        const testResultsHistory2 = this.state.testResultsHistory.slice() || [];
+        testResultsHistory2.push(testResults);
+        this.setState({ isTesting: false, testResultsHistory: testResultsHistory2}, () => console.log(this.state));
     }
 
-    buildQuestions(words: any){
+    buildQuestions(words: Array<PracticeWord>){
         let questions :Array<TestQuestion> = [];
 
         // build english to hebrew questions
@@ -73,7 +91,7 @@ export class WordsPractice extends React.Component<any,any> {
             const correctHebrewTranslation = words[i].heb;
 
 
-            let otherOptions : Array<string> = words.map((w :any) => w.heb); // get all hebrew words                                
+            let otherOptions : Array<string> = words.map((w :PracticeWord) => w.heb); // get all hebrew words                                
             otherOptions.splice(i, 1); // remove the correct translation
             otherOptions = shuffleArray(otherOptions);
             otherOptions.splice(3); // take only 3 options

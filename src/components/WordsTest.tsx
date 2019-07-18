@@ -1,5 +1,4 @@
 import React from 'react';
-import { shuffleArray } from '../utils/utils';
 
 export class WordsTest extends React.Component<any,any> {
     constructor(props: any){
@@ -36,35 +35,13 @@ export class WordsTest extends React.Component<any,any> {
     
     answerQuestion(word: string){
         const isCorrectAnswer = this.props.questions[this.state.currentQuestionIndex].isCorrectAnswer(word);
-        isCorrectAnswer ? console.log("Correct!") : console.log("wrong!");        
-        this.setState({currentQuestionIndex: this.state.currentQuestionIndex + 1}); // advance to next question        
+        isCorrectAnswer ? console.log("Correct!") : console.log("wrong!");
         this.state.testResults.addAnswerStats(isCorrectAnswer, word);
-    }
-}
 
-export class TestQuestion{
-    wordToTranslate: string;
-    correctTranslation: string;
-    answerOptions: Array<string>;
-
-    constructor(wordToTranslate: string, correctTranslation: string, otherOptions: Array<string>){
-        this.wordToTranslate = wordToTranslate;
-        this.correctTranslation = correctTranslation;
-        
-        otherOptions.push(correctTranslation);
-        this.answerOptions = shuffleArray(otherOptions);
+        if (isCorrectAnswer){
+            this.setState({currentQuestionIndex: this.state.currentQuestionIndex + 1}); // advance to next question      
+        }        
     }
-
-    renderQuestion(answerQuestionFunc: (word :string) => void){
-        return (
-            <div>
-                <h2>{this.wordToTranslate}</h2>
-                {this.answerOptions.map(word => <button key={word} onClick={(e: any) => answerQuestionFunc(word)}>{word}</button>)}
-            </div>
-        )
-    }
-    
-    isCorrectAnswer = (wordChosen: string) => wordChosen === this.correctTranslation;
 }
 
 export class TestResults{
