@@ -1,4 +1,5 @@
 import React from 'react';
+import Button from 'react-bootstrap/Button';
 
 export class WordsTest extends React.Component<any,any> {
     constructor(props: any){
@@ -28,7 +29,7 @@ export class WordsTest extends React.Component<any,any> {
                 <div className="test-question">
                     {currentQuestion.renderQuestion((word :string) => this.answerQuestion(word))}
                 </div>
-                <button onClick={() => this.props.onTestEnd(this.state.testResults)}>End test</button>
+                <Button variant="outline-primary" onClick={() => this.props.onTestEnd(this.state.testResults)}>End test</Button>
             </div>
         )
     }

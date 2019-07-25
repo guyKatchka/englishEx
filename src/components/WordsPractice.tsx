@@ -44,31 +44,50 @@ export class WordsPractice extends React.Component<any,WordsPracticeState> {
     }
 
     render() {        
+        let contentDisplay = this.getShowWordsContent();
+        
         if (!this.state || !this.state.weeklyWords){
-            return (<div>
+            contentDisplay = (<div>
                 Loading...
             </div>);            
         }
-
+        
         if (this.state.isTesting && this.state.questions){
-            return(
+            contentDisplay = (
                 <WordsTest questions={this.state.questions} onTestEnd={(testResults:any) => this.endTest(testResults)}></WordsTest>
             )
         }
-        
+
+        return (
+            <div className="app-main-box">
+                {contentDisplay}                
+            </div>            
+        );                
+    }
+
+    getShowWordsContent(){
+        let showPreviousWordsButton = 
+            this.state.showPreviousWords ?
+            <Button variant="outline-secondary" onClick={() => this.hidePreviousWords()}>Hide previous words</Button> :
+            <Button variant="outline-secondary" onClick={() => this.showPreviousWords()}>Show previous words</Button>;
+
         return (
             <div>
                 <WordsListByDates weeklyWords={this.state.weeklyWords} showPreviousWords={this.state.showPreviousWords}></WordsListByDates>                
                 <div>
                     <Button variant="outline-primary" onClick={() => this.startTest()}>Start Test!</Button>
-                    <Button variant="outline-secondary" onClick={() => this.showPreviousWords()}>Show previous words</Button>
+                    {showPreviousWordsButton}
                 </div>                
             </div>            
-        );                
+        ); 
     }
 
     showPreviousWords = () => {
         this.setState({showPreviousWords: true})
+    }
+
+    hidePreviousWords = () => {
+        this.setState({showPreviousWords: false})
     }
     
     startTest = () => {

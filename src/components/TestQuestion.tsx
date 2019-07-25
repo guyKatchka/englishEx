@@ -19,9 +19,11 @@ export class TestQuestion{
         return (
             <div>
                 <h2>{this.wordToTranslate}</h2>
-                {this.answerOptions.map(word => 
-                    <Button variant="outline-secondary" key={word} onClick={(e: any) => answerQuestionFunc(word)}>{word}</Button>)
-                }
+                <div className="answer-buttons-row">
+                    {this.answerOptions.map(word => 
+                        <Button variant="outline-secondary" key={word} onClick={(e: any) => answerQuestionFunc(word)}>{word}</Button>)
+                    }
+                </div>                
             </div>
         )
     }
