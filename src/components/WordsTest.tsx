@@ -1,6 +1,7 @@
 import React from 'react';
 import Button from 'react-bootstrap/Button';
 import { TestQuestion } from './TestQuestion';
+import { TestQuestion2 } from './TestQuestion2';
 
 export interface WordsTestsProps{
     questions: Array<TestQuestion>;
@@ -38,13 +39,18 @@ export class WordsTest extends React.Component<WordsTestsProps,WordsTestState> {
         return(
             <div className="words-test">
                 <div className="words-test-question">
-                    {currentQuestion.renderQuestion((word :string) => this.answerQuestion(word))}
+                   <TestQuestion2 
+                        wordToTranslate={currentQuestion.wordToTranslate} 
+                        answerQuestionFunc={(word :string) => this.answerQuestion(word)}
+                        answerOptions={currentQuestion.answerOptions}
+                        correctTranslation={currentQuestion.correctTranslation}>
+                    </TestQuestion2> 
                 </div>
                 <Button variant="outline-primary" onClick={() => this.props.onTestEnd(this.state.testResults)}>End test</Button>
             </div>
         )
     }
-    
+    // {currentQuestion.renderQuestion((word :string) => this.answerQuestion(word))}
     answerQuestion(word: string){
         const isCorrectAnswer = this.props.questions[this.state.currentQuestionIndex].isCorrectAnswer(word);
         isCorrectAnswer ? console.log("Correct!") : console.log("wrong!");

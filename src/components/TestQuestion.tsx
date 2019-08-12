@@ -28,7 +28,7 @@ export class TestQuestion{
                             variant="outline-secondary" 
                             key={word}
                             bsPrefix={this.wrongClick ? "word-answer-background" : ""} 
-                            onClick={(e: any) => this.answerQuestion(answerQuestionFunc, word)}>
+                            onClick={(e: any) => answerQuestionFunc(word)}>
                                 {word}
                         </Button>)
                     }
@@ -38,9 +38,6 @@ export class TestQuestion{
     }
 
     answerQuestion = (answerQuestionFunc: (word :string) => void, word: string) => {
-        this.wrongClick = !this.isCorrectAnswer(word);
-        console.log(`answered question, clicked ${word}. wrongClickValue: ${this.wrongClick}`);
-        answerQuestionFunc(word);
     }
     
     isCorrectAnswer = (wordChosen: string) => wordChosen === this.correctTranslation;
