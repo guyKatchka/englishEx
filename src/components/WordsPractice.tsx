@@ -3,7 +3,7 @@ import Moment from 'react-moment';
 import axios from 'axios';
 import Button from 'react-bootstrap/Button';
 import {renderWordsList, WordsListByDates} from './WordsList';
-import { WordsTest } from './WordsTest';
+import { WordsTest, TestResults } from './WordsTest';
 import { shuffleArray } from '../utils/utils';
 import { TestQuestion } from './TestQuestion';
 import { WeeklyWordsObject, PracticeWord } from '../Interfaces/words-interfaces';
@@ -12,8 +12,8 @@ export interface WordsPracticeState{
     weeklyWords: Array<WeeklyWordsObject>;
     availableDates: Array<Date>;
     isTesting: boolean;
-    testResultsHistory: Array<any>;
-    questions: Array<any>;
+    testResultsHistory: Array<TestResults>;
+    questions: Array<TestQuestion>;
     showPreviousWords: boolean;
 }
 
@@ -54,7 +54,7 @@ export class WordsPractice extends React.Component<any,WordsPracticeState> {
         
         if (this.state.isTesting && this.state.questions){
             contentDisplay = (
-                <WordsTest questions={this.state.questions} onTestEnd={(testResults:any) => this.endTest(testResults)}></WordsTest>
+                <WordsTest questions={this.state.questions} onTestEnd={(testResults:TestResults) => this.endTest(testResults)}></WordsTest>
             )
         }
 
@@ -95,7 +95,7 @@ export class WordsPractice extends React.Component<any,WordsPracticeState> {
         this.setState({isTesting: true, questions});
     }
 
-    endTest = (testResults:any) => {
+    endTest = (testResults:TestResults) => {
         const testResultsHistory2 = this.state.testResultsHistory.slice() || [];
         testResultsHistory2.push(testResults);
         this.setState({ isTesting: false, testResultsHistory: testResultsHistory2}, () => console.log(this.state));

@@ -17,19 +17,19 @@ export class WordsListByDates extends React.Component<WordsListProps,any> {
         if (!this.props || 
             !this.props.weeklyWords ||
             !this.props.weeklyWords[0] ||
-            !this.props.weeklyWords[0].words){
+            !this.props.weeklyWords[0].words ||
+            !this.props.weeklyWords[0].weekDate){
             return(
                 <div></div>
             )
         }
-        const latestWordsListPresentation = renderWordsList(this.props.weeklyWords[0].words);
 
         const weeklyWordsToPresent = this.props.showPreviousWords ? this.props.weeklyWords : this.props.weeklyWords.slice(0, 1);
         const wordsPracticeListWithDates = 
-            weeklyWordsToPresent.map((weeklyWordsObject: WeeklyWordsObject) => {
-                const wordsListPresentation = renderWordsList(weeklyWordsObject.words);
+            weeklyWordsToPresent.map((weeklyWordsObject: WeeklyWordsObject, index:number) => {
+                const wordsListPresentation = renderWordsList(weeklyWordsObject);
                 return(
-                    <div>
+                    <div key={index}>
                         <Moment format="DD/MM/YYYY" date={weeklyWordsObject.weekDate}></Moment>
                         {wordsListPresentation}
                     </div>
@@ -46,12 +46,14 @@ export class WordsListByDates extends React.Component<WordsListProps,any> {
 }
 
 
-export function renderWordsList(words: any){
+export function renderWordsList(weeklyWordsObject: WeeklyWordsObject){
+    const words = weeklyWordsObject.words;
+    
     return (
         <ul style={{listStyleType: 'none'}}>
-            {words.map((wordObject: any) => 
-                <li key={wordObject.eng}>
-                    {wordObject.eng} - {wordObject.heb}
+            {words.map((wordObject, index:number) => 
+                <li key={wordObject.eng + "_" + index}>
+                    <span>{wordObject.eng} - {wordObject.heb}</span>
                 </li>
                 )}
         </ul>

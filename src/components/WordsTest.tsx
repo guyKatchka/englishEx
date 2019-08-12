@@ -1,7 +1,18 @@
 import React from 'react';
 import Button from 'react-bootstrap/Button';
+import { TestQuestion } from './TestQuestion';
 
-export class WordsTest extends React.Component<any,any> {
+export interface WordsTestsProps{
+    questions: Array<TestQuestion>;
+    onTestEnd: (testResults: TestResults) => void
+}
+
+export interface WordsTestState{
+    currentQuestionIndex: number,
+    testResults: TestResults
+}
+
+export class WordsTest extends React.Component<WordsTestsProps,WordsTestState> {
     constructor(props: any){
         super(props);    
         this.state = {
@@ -25,8 +36,8 @@ export class WordsTest extends React.Component<any,any> {
 
         let currentQuestion = this.props.questions[this.state.currentQuestionIndex];
         return(
-            <div>
-                <div className="test-question">
+            <div className="words-test">
+                <div className="words-test-question">
                     {currentQuestion.renderQuestion((word :string) => this.answerQuestion(word))}
                 </div>
                 <Button variant="outline-primary" onClick={() => this.props.onTestEnd(this.state.testResults)}>End test</Button>

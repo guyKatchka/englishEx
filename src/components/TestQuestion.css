@@ -1,4 +1,7 @@
 .answer-buttons-row{
-    display: flex;
-    
+    display: flex;    
+}
+
+.word-answer-background{
+    background-color: red;
 }
