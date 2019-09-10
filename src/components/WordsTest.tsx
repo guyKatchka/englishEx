@@ -1,7 +1,7 @@
 import React from 'react';
 import Button from 'react-bootstrap/Button';
 import { TestQuestion } from './TestQuestion';
-import { TestQuestion2 } from './TestQuestion2';
+import { TestQuestionPresentation } from './TestQuestion2';
 
 export interface WordsTestsProps{
     questions: Array<TestQuestion>;
@@ -11,14 +11,16 @@ export interface WordsTestsProps{
 export interface WordsTestState{
     currentQuestionIndex: number,
     testResults: TestResults
+    currentQuestion: TestQuestion
 }
 
 export class WordsTest extends React.Component<WordsTestsProps,WordsTestState> {
     constructor(props: any){
-        super(props);    
+        super(props);
         this.state = {
             currentQuestionIndex: 0,
-            testResults: new TestResults(this.props.questions.length)
+            testResults: new TestResults(this.props.questions.length),
+            currentQuestion: this.props.questions[0]
         }      
     }
 
@@ -35,29 +37,31 @@ export class WordsTest extends React.Component<WordsTestsProps,WordsTestState> {
             return(<div>Done!</div>);
         }
 
-        let currentQuestion = this.props.questions[this.state.currentQuestionIndex];
         return(
             <div className="words-test">
                 <div className="words-test-question">
-                   <TestQuestion2 
-                        wordToTranslate={currentQuestion.wordToTranslate} 
+                   <TestQuestionPresentation 
                         answerQuestionFunc={(word :string) => this.answerQuestion(word)}
-                        answerOptions={currentQuestion.answerOptions}
-                        correctTranslation={currentQuestion.correctTranslation}>
-                    </TestQuestion2> 
+                        testQuestion={this.state.currentQuestion}>
+                    </TestQuestionPresentation> 
                 </div>
                 <Button variant="outline-primary" onClick={() => this.props.onTestEnd(this.state.testResults)}>End test</Button>
             </div>
         )
     }
-    // {currentQuestion.renderQuestion((word :string) => this.answerQuestion(word))}
+    
     answerQuestion(word: string){
         const isCorrectAnswer = this.props.questions[this.state.currentQuestionIndex].isCorrectAnswer(word);
         isCorrectAnswer ? console.log("Correct!") : console.log("wrong!");
         this.state.testResults.addAnswerStats(isCorrectAnswer, word);
 
         if (isCorrectAnswer){
-            this.setState({currentQuestionIndex: this.state.currentQuestionIndex + 1}); // advance to next question      
+            const currentQuestionIndex = this.state.currentQuestionIndex + 1
+            const currentQuestion = this.props.questions[currentQuestionIndex];
+            this.setState({
+                currentQuestionIndex,
+                currentQuestion
+            }); // advance to next question      
         }        
     }
 }

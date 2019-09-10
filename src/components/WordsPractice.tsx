@@ -82,13 +82,10 @@ export class WordsPractice extends React.Component<any,WordsPracticeState> {
         ); 
     }
 
-    showPreviousWords = () => {
-        this.setState({showPreviousWords: true})
-    }
+    showPreviousWords = () => this.setState({showPreviousWords: true})
+    
 
-    hidePreviousWords = () => {
-        this.setState({showPreviousWords: false})
-    }
+    hidePreviousWords = () => this.setState({showPreviousWords: false})
     
     startTest = () => {
         const questions = this.buildQuestions(this.state.weeklyWords[0].words);

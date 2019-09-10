@@ -1,12 +1,11 @@
 import React from 'react';
 import Button from 'react-bootstrap/Button';
 import { shuffleArray } from '../utils/utils';
+import { TestQuestion } from './TestQuestion';
 
 export interface TestQuestionProps{
-    wordToTranslate: string,
     answerQuestionFunc: (word :string) => void,
-    answerOptions: Array<string>,
-    correctTranslation: string
+    testQuestion:TestQuestion
 }
 
 export class AnswerOption{
@@ -25,35 +24,56 @@ export interface TestQuestionState{
     testQuestionOptions:Array<AnswerOption>
 }
 
-export class TestQuestion2 extends React.Component<TestQuestionProps,TestQuestionState>{
+export class TestQuestionPresentation extends React.Component<TestQuestionProps,TestQuestionState>{
 
     constructor(props:any){
         super(props);
 
+        console.log(props);
         this.state = {
-            testQuestionOptions : this.props.answerOptions.map((word:string) => 
-                 new AnswerOption(word, this.props.correctTranslation === word)
+            testQuestionOptions : this.props.testQuestion.answerOptions.map((word:string) => 
+                 new AnswerOption(word, this.props.testQuestion.correctTranslation === word)
             ),
         }
     }
 
     render(){
-
         return (
             <div>
-                <h2>{this.props.wordToTranslate}</h2>
+                <h2>{this.props.testQuestion.wordToTranslate}</h2>
                 <div>
-                    {this.state.testQuestionOptions.map(answerOption => 
+                    {this.state.testQuestionOptions.map((answerOption: AnswerOption, answerOptionIndex: number) => 
                         <Button 
                             variant="outline-secondary" 
                             key={answerOption.word}
                             bsPrefix={answerOption.isClicked && !answerOption.isCorrectTranslation ? "word-answer-background" : ""} 
-                            onClick={(e: any) => this.props.answerQuestionFunc(answerOption.word)}>
+                            onClick={(e: any) => this.clickOnWordOption(answerOption, answerOptionIndex)}>
                                 {answerOption.word}
                         </Button>)
                     }
                 </div>                
             </div>
         )
+    }
+
+    clickOnWordOption = (answerOption: AnswerOption, answerOptionIndex: number) => {
+        if (answerOption.isCorrectTranslation){
+            this.resetClicks()
+        }
+        else{
+            let testQuestionOptions = this.state.testQuestionOptions;
+            testQuestionOptions[answerOptionIndex].isClicked = true;
+            this.setState({testQuestionOptions});
+        }        
+        
+        this.props.answerQuestionFunc(answerOption.word);
+    }
+
+    resetClicks = () => {
+        let testQuestionOptions = this.state.testQuestionOptions;
+        testQuestionOptions.forEach((answerOption:AnswerOption) => {
+            answerOption.isClicked = false;
+        });
+        this.setState({testQuestionOptions});
     }
 }
