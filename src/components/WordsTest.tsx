@@ -40,7 +40,8 @@ export class WordsTest extends React.Component<WordsTestsProps,WordsTestState> {
         return(
             <div className="words-test">
                 <div className="words-test-question">
-                   <TestQuestionPresentation 
+                   <TestQuestionPresentation
+                        key={this.state.currentQuestionIndex} 
                         answerQuestionFunc={(word :string) => this.answerQuestion(word)}
                         testQuestion={this.state.currentQuestion}>
                     </TestQuestionPresentation> 

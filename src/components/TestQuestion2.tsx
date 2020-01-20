@@ -45,7 +45,7 @@ export class TestQuestionPresentation extends React.Component<TestQuestionProps,
                     {this.state.testQuestionOptions.map((answerOption: AnswerOption, answerOptionIndex: number) => 
                         <Button 
                             variant="outline-secondary" 
-                            key={answerOption.word}
+                            key={answerOption.word + "_" + answerOptionIndex}
                             bsPrefix={answerOption.isClicked && !answerOption.isCorrectTranslation ? "word-answer-background" : ""} 
                             onClick={(e: any) => this.clickOnWordOption(answerOption, answerOptionIndex)}>
                                 {answerOption.word}

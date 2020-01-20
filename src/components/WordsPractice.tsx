@@ -61,7 +61,7 @@ export class WordsPractice extends React.Component<any,WordsPracticeState> {
         return (
             <div className="app-main-box">
                 {contentDisplay}                
-            </div>            
+            </div>
         );                
     }
 
