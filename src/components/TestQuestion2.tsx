@@ -29,7 +29,6 @@ export class TestQuestionPresentation extends React.Component<TestQuestionProps,
     constructor(props:any){
         super(props);
 
-        console.log(props);
         this.state = {
             testQuestionOptions : this.props.testQuestion.answerOptions.map((word:string) => 
                  new AnswerOption(word, this.props.testQuestion.correctTranslation === word)

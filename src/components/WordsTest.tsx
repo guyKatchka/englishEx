@@ -82,10 +82,10 @@ export class TestResults{
 
     addAnswerStats = (isCorrectAnswer :boolean, word: string) => 
     {
-        isCorrectAnswer ?
+        if (!this.wordsWithCorrectAnswers.includes(word) && !this.wordsWithWrongAnswer.includes(word)){
+            isCorrectAnswer ?
             this.wordsWithCorrectAnswers.push(word) :
-            this.wordsWithWrongAnswer.push(word);        
+            this.wordsWithWrongAnswer.push(word);
+        }                
     }
-        
-    
 }

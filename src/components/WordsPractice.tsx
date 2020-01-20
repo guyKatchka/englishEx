@@ -17,15 +17,19 @@ export interface WordsPracticeState{
     showPreviousWords: boolean;
 }
 
+const testHistoryLocalStorageKey = "TestResultsHistory";
+
+
 export class WordsPractice extends React.Component<any,WordsPracticeState> {
 
     constructor(props: any){
         super(props);
+        const testHistory = JSON.parse(window.localStorage.getItem(testHistoryLocalStorageKey) || "[]");
         this.state = {
             weeklyWords: [],
             availableDates: [],
             isTesting: false,
-            testResultsHistory: [],
+            testResultsHistory: testHistory,
             questions: [],
             showPreviousWords: false
         };
@@ -38,9 +42,9 @@ export class WordsPractice extends React.Component<any,WordsPracticeState> {
                     weeklyWords, 
                     availableDates: weeklyWords.map((w: WeeklyWordsObject) => w.weekDate),
                     isTesting: false,
-                    testResultsHistory: []
+                    testResultsHistory: testHistory,
                 });
-        })
+        });
     }
 
     render() {        
@@ -94,8 +98,10 @@ export class WordsPractice extends React.Component<any,WordsPracticeState> {
 
     endTest = (testResults:TestResults) => {
         const testResultsHistory2 = this.state.testResultsHistory.slice() || [];
+        console.log(testResultsHistory2);
         testResultsHistory2.push(testResults);
         this.setState({ isTesting: false, testResultsHistory: testResultsHistory2}, () => console.log(this.state));
+        window.localStorage.setItem(testHistoryLocalStorageKey, JSON.stringify(testResultsHistory2));
     }
 
     buildQuestions(words: Array<PracticeWord>){
