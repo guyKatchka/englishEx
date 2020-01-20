@@ -98,7 +98,6 @@ export class WordsPractice extends React.Component<any,WordsPracticeState> {
 
     endTest = (testResults:TestResults) => {
         const testResultsHistory2 = this.state.testResultsHistory.slice() || [];
-        console.log(testResultsHistory2);
         testResultsHistory2.push(testResults);
         this.setState({ isTesting: false, testResultsHistory: testResultsHistory2}, () => console.log(this.state));
         window.localStorage.setItem(testHistoryLocalStorageKey, JSON.stringify(testResultsHistory2));
