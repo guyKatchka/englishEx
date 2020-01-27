@@ -3,24 +3,28 @@
         "weekDate": "2019-07-06T08:15:30.000Z",
         "words": [
             {
-                "eng": "test",
-                "heb": "טסט"
+                "eng": "animal",
+                "heb": "חיה"
             },
             {
-                "eng": "two",
-                "heb": "שתיים"
+                "eng": "think",
+                "heb": "לחשוב"
             },
             {
-                "eng": "tree",
-                "heb": "עץ"
+                "eng": "לשמור",
+                "heb": "keep"
             },
             {
-                "eng": "apple",
-                "heb": "תפוח"
+                "eng": "clean",
+                "heb": "נקי"
             },
             {
-                "eng": "true",
-                "heb": "אמת"
+                "eng": "into",
+                "heb": "לתוך"
+            },
+            {
+                "eng": "understand",
+                "heb": "להבין"
             }
         ]
     },
