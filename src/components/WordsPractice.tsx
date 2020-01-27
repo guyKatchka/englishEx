@@ -7,6 +7,7 @@ import { WordsTest, TestResults } from './WordsTest';
 import { shuffleArray } from '../utils/utils';
 import { TestQuestion } from './TestQuestion';
 import { WeeklyWordsObject, PracticeWord } from '../Interfaces/words-interfaces';
+import { ProgressDisplay } from './progressDisplay';
 
 export interface WordsPracticeState{
     weeklyWords: Array<WeeklyWordsObject>;
@@ -15,6 +16,7 @@ export interface WordsPracticeState{
     testResultsHistory: Array<TestResults>;
     questions: Array<TestQuestion>;
     showPreviousWords: boolean;
+    showProgress: boolean;
 }
 
 const testHistoryLocalStorageKey = "TestResultsHistory";
@@ -31,7 +33,8 @@ export class WordsPractice extends React.Component<any,WordsPracticeState> {
             isTesting: false,
             testResultsHistory: testHistory,
             questions: [],
-            showPreviousWords: false
+            showPreviousWords: false,
+            showProgress: false
         };
         axios.get(`./weeklyWords.json`)
         .then(res => {
@@ -62,6 +65,14 @@ export class WordsPractice extends React.Component<any,WordsPracticeState> {
             )
         }
 
+        if (this.state.showProgress){
+            contentDisplay = 
+                <ProgressDisplay 
+                    onBackClick={() => this.hideResults()}
+                    previousTestResults={this.state.testResultsHistory}>
+                </ProgressDisplay>
+        }
+
         return (
             <div className="app-main-box">
                 {contentDisplay}                
@@ -72,15 +83,20 @@ export class WordsPractice extends React.Component<any,WordsPracticeState> {
     getShowWordsContent(){
         let showPreviousWordsButton = 
             this.state.showPreviousWords ?
-            <Button variant="outline-secondary" onClick={() => this.hidePreviousWords()}>Hide previous words</Button> :
-            <Button variant="outline-secondary" onClick={() => this.showPreviousWords()}>Show previous words</Button>;
+            <Button variant="outline-secondary" onClick={() => this.hidePreviousWords()}>הסתר מילים קודמות</Button> :
+            <Button variant="outline-secondary" onClick={() => this.showPreviousWords()}>הצג מילים קודמות</Button>;
 
+        const showProgressButton = 
+            this.state.testResultsHistory && this.state.testResultsHistory.length ?    
+                <Button variant="outline-secondary" onClick={() => this.showResults()}>הצג תוצאות קודמות</Button> :
+                null;
         return (
             <div>
                 <WordsListByDates weeklyWords={this.state.weeklyWords} showPreviousWords={this.state.showPreviousWords}></WordsListByDates>                
                 <div>
-                    <Button variant="outline-primary" onClick={() => this.startTest()}>Start Test!</Button>
+                    <Button variant="outline-primary" onClick={() => this.startTest()}>התחל מבחן!</Button>
                     {showPreviousWordsButton}
+                    {showProgressButton}
                 </div>                
             </div>            
         ); 
@@ -90,6 +106,10 @@ export class WordsPractice extends React.Component<any,WordsPracticeState> {
     
 
     hidePreviousWords = () => this.setState({showPreviousWords: false})
+
+    showResults = () => this.setState({showPreviousWords: false, showProgress: true})
+
+    hideResults = () => this.setState({showPreviousWords: false, showProgress: false})
     
     startTest = () => {
         const questions = this.buildQuestions(this.state.weeklyWords[0].words);

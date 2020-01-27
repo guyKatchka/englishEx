@@ -38,7 +38,7 @@ export class WordsListByDates extends React.Component<WordsListProps,any> {
 
         return(
         <div>
-            <h2>Words to practice</h2>
+            <h2>מילים לתרגול</h2>
                 {wordsPracticeListWithDates}                
         </div>        
     );
