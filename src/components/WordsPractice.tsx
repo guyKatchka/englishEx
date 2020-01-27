@@ -7,7 +7,7 @@ import { WordsTest, TestResults } from './WordsTest';
 import { shuffleArray } from '../utils/utils';
 import { TestQuestion } from './TestQuestion';
 import { WeeklyWordsObject, PracticeWord } from '../Interfaces/words-interfaces';
-import { ProgressDisplay } from './progressDisplay';
+import { ProgressDisplay } from './ProgressDisplay';
 
 export interface WordsPracticeState{
     weeklyWords: Array<WeeklyWordsObject>;

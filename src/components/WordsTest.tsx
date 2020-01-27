@@ -87,5 +87,5 @@ export class TestResults{
             this.wordsWithCorrectAnswers.push(word) :
             this.wordsWithWrongAnswer.push(word);
         }                
-    }
+    }    
 }
