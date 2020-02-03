@@ -1,6 +1,5 @@
 import React from 'react';
 import Button from 'react-bootstrap/Button';
-import { shuffleArray } from '../utils/utils';
 import { TestQuestion } from './TestQuestion';
 
 export interface TestQuestionProps{

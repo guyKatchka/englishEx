@@ -1,8 +1,7 @@
 import React from 'react';
-import Moment from 'react-moment';
 import axios from 'axios';
 import Button from 'react-bootstrap/Button';
-import {renderWordsList, WordsListByDates} from './WordsList';
+import { WordsListByDates} from './WordsList';
 import { WordsTest, TestResults } from './WordsTest';
 import { shuffleArray } from '../utils/utils';
 import { TestQuestion } from './TestQuestion';

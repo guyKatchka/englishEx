@@ -2,6 +2,7 @@ import React from 'react';
 import Button from 'react-bootstrap/Button';
 import Accordion from 'react-bootstrap/Accordion'
 import { TestResults } from './WordsTest';
+import './ProgressDisplay.css';
 
 export interface ProgressDisplayProps{
     onBackClick: () => void;
@@ -15,12 +16,10 @@ export class ProgressDisplay extends React.Component<ProgressDisplayProps,any> {
     }
 
     render(){
-        const stringifiedTestResults = JSON.stringify(this.props.previousTestResults);
-
         const testResultsRendered = 
             this.props && 
             this.props.previousTestResults &&
-            this.props.previousTestResults.map((testResult, index) => this.getRenderedTestResult2(testResult, index));
+            this.props.previousTestResults.map((testResult, index) => this.getRenderedTestResult(testResult, index));
         return (
             <div>
                 <h2>
@@ -36,25 +35,9 @@ export class ProgressDisplay extends React.Component<ProgressDisplayProps,any> {
                 </Button>
             </div>
         )
-    }
+    }    
 
-    getRenderedTestResult = (testResult: TestResults) => {
-        return(
-        <div key={testResult.practiceDate.toString()}>
-            <h2>{testResult.practiceDate}</h2>
-            <h3>מילים ללא טעות</h3>
-            <span>
-                {testResult.wordsWithCorrectAnswers.join(",")}
-            </span>
-            <h3>מילים שטעית בהן</h3>
-            <ul>
-                TODO
-            </ul>
-        </div>
-        )
-    }
-
-    getRenderedTestResult2 = (testResult: TestResults, index: number) => {
+    getRenderedTestResult = (testResult: TestResults, index: number) => {
         const dateFormatOptions = {
             hour12 : true,
             hour:  "2-digit",
@@ -62,20 +45,28 @@ export class ProgressDisplay extends React.Component<ProgressDisplayProps,any> {
         };
         return(
         <div key={testResult.practiceDate.toString()}>
-            <Accordion defaultActiveKey="0">
+            <Accordion>
                 <Accordion.Toggle as={Button} variant="link" eventKey={index.toString()}>
                     {new Date(testResult.practiceDate).toLocaleDateString("en-us", dateFormatOptions)}
                 </Accordion.Toggle>
                 <Accordion.Collapse eventKey={index.toString()}>
-                    <div>
-                        <h3>מילים ללא טעות</h3>
-                        <span>
-                            {testResult.wordsWithCorrectAnswers.join(",")}
-                        </span>
-                        <h3>מילים שטעית בהן</h3>
-                        <ul>
-                            TODO
-                        </ul>
+                    <div className="progress-display-details-container">
+                        <div>
+                            <span className="progress-display-correct-words-title">
+                                תשובות נכונות:  
+                            </span>
+                            <span className="progress-display-correct-words-list">
+                                {testResult.wordsWithCorrectAnswers.join(",")}
+                            </span>
+                        </div>
+                        <div>
+                            <span className="progress-display-correct-words-title">
+                                מילים לא נכונות: 
+                            </span>
+                            <span className="progress-display-wrong-words-list">
+                                {testResult.wordsWithWrongAnswer.join(",")}
+                            </span>
+                        </div>
                     </div>                            
                 </Accordion.Collapse>  
             </Accordion>                      

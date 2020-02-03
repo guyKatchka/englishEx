@@ -1,0 +1,15 @@
+.progress-display-correct-words-list{
+    color: green;
+}
+
+.progress-display-wrong-words-list{
+    color: red;
+}
+
+.progress-display-details-container{
+    font-size: 20px;
+}
+
+.progress-display-correct-words-title{
+    margin-left: 5px;
+}
