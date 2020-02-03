@@ -32,20 +32,32 @@
         "weekDate": "2019-07-01T08:15:30.000Z",
         "words": [
             {
-                "eng": "test2",
-                "heb": "2טסט"
+                "eng": "What",
+                "heb": "מה"
             },
             {
-                "eng": "other",
-                "heb": "אחר"
+                "eng": "When",
+                "heb": "מתי"
             },
             {
-                "eng": "flower",
-                "heb": "פרח"
+                "eng": "Where",
+                "heb": "איפה"
             },
             {
-                "eng": "tomato",
-                "heb": "עגבניה"
+                "eng": "Who",
+                "heb": "מי"
+            },
+            {
+                "eng": "How",
+                "heb": "איך"
+            },
+            {
+                "eng": "Which",
+                "heb": "איזה"
+            },
+            {
+                "eng": "Why",
+                "heb": "למה"
             }
         ]
     }    
