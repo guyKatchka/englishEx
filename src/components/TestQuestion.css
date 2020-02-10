@@ -2,6 +2,12 @@
     display: flex;    
 }
 
-.word-answer-background{
+.word-wrong-answer-background{
     background-color: red;
+    color: white;
+}
+
+.word-correct-answer-background{
+    background-color: green;
+    color: white;
 }

@@ -20,7 +20,9 @@ export class AnswerOption{
 }
 
 export interface TestQuestionState{
-    testQuestionOptions:Array<AnswerOption>
+    testQuestionOptions:Array<AnswerOption>,
+    buttonsDisabled:boolean,
+    answerFeedbackText:string
 }
 
 export class TestQuestionPresentation extends React.Component<TestQuestionProps,TestQuestionState>{
@@ -32,6 +34,8 @@ export class TestQuestionPresentation extends React.Component<TestQuestionProps,
             testQuestionOptions : this.props.testQuestion.answerOptions.map((word:string) => 
                  new AnswerOption(word, this.props.testQuestion.correctTranslation === word)
             ),
+            buttonsDisabled: false,
+            answerFeedbackText: ''
         }
     }
 
@@ -44,27 +48,38 @@ export class TestQuestionPresentation extends React.Component<TestQuestionProps,
                         <Button 
                             variant="outline-secondary" 
                             key={answerOption.word + "_" + answerOptionIndex}
-                            bsPrefix={answerOption.isClicked && !answerOption.isCorrectTranslation ? "word-answer-background" : ""} 
-                            onClick={(e: any) => this.clickOnWordOption(answerOption, answerOptionIndex)}>
+                            bsPrefix={this.getAnswerOptionBackground(answerOption)} 
+                            onClick={(e: any) => this.clickOnWordOption(answerOption, answerOptionIndex)}
+                            disabled={this.state.buttonsDisabled}>
                                 {answerOption.word}
                         </Button>)
                     }
+                    <div className={"words-test-answer-feedback"}>
+                        {this.state.answerFeedbackText}
+                    </div>
                 </div>                
             </div>
         )
     }
 
+    getAnswerOptionBackground(answerOption: AnswerOption){
+        if (!answerOption.isClicked) return '';        
+        return answerOption.isCorrectTranslation ? 'word-correct-answer-background' : 'word-wrong-answer-background';        
+    }
+
     clickOnWordOption = (answerOption: AnswerOption, answerOptionIndex: number) => {
-        if (answerOption.isCorrectTranslation){
-            this.resetClicks()
-        }
-        else{
-            let testQuestionOptions = this.state.testQuestionOptions;
-            testQuestionOptions[answerOptionIndex].isClicked = true;
-            this.setState({testQuestionOptions});
-        }        
+        let testQuestionOptions = this.state.testQuestionOptions;
+        testQuestionOptions[answerOptionIndex].isClicked = true;
+        this.setState({testQuestionOptions});
+
+        this.setState({
+            answerFeedbackText: answerOption.isCorrectTranslation ? "נכון!" : "נסה שוב",
+            buttonsDisabled: answerOption.isCorrectTranslation ? true : false
+        })
         
-        this.props.answerQuestionFunc(answerOption.word);
+        setTimeout(
+            () => this.props.answerQuestionFunc(answerOption.word),
+            answerOption.isCorrectTranslation ? 1200 : 0);
     }
 
     resetClicks = () => {

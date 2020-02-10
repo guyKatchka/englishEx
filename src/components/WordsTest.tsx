@@ -1,7 +1,7 @@
 import React from 'react';
 import Button from 'react-bootstrap/Button';
 import { TestQuestion } from './TestQuestion';
-import { TestQuestionPresentation } from './TestQuestion2';
+import { TestQuestionPresentation } from './TestQuestionPresentation';
 
 export interface WordsTestsProps{
     questions: Array<TestQuestion>;
@@ -53,7 +53,6 @@ export class WordsTest extends React.Component<WordsTestsProps,WordsTestState> {
     
     answerQuestion(word: string){
         const isCorrectAnswer = this.props.questions[this.state.currentQuestionIndex].isCorrectAnswer(word);
-        isCorrectAnswer ? console.log("Correct!") : console.log("wrong!");
         this.state.testResults.addAnswerStats(isCorrectAnswer, word);
 
         if (isCorrectAnswer){
@@ -62,7 +61,7 @@ export class WordsTest extends React.Component<WordsTestsProps,WordsTestState> {
             this.setState({
                 currentQuestionIndex,
                 currentQuestion
-            }); // advance to next question      
+            }); // advance to next question                 
         }        
     }
 }
