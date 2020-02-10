@@ -13,3 +13,14 @@
 .progress-display-correct-words-title{
     margin-left: 5px;
 }
+
+.progress-item{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.test-results-list{
+    display: flex;
+    flex-direction: column-reverse;
+}

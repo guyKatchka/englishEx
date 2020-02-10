@@ -3,6 +3,19 @@ import Button from 'react-bootstrap/Button';
 import Accordion from 'react-bootstrap/Accordion'
 import { TestResults } from './WordsTest';
 import './ProgressDisplay.css';
+import {
+    Chart,
+    ChartLegend,
+    ChartSeries,
+    ChartSeriesItem,
+    ChartArea,
+    ChartTooltip,
+    ChartSeriesLabels,
+    TooltipPoint,
+    TooltipContext,
+    SharedTooltipContext
+  } from '@progress/kendo-react-charts';
+import { inherits } from 'util';
 
 export interface ProgressDisplayProps{
     onBackClick: () => void;
@@ -15,6 +28,8 @@ export class ProgressDisplay extends React.Component<ProgressDisplayProps,any> {
         this.state = {};
     }
 
+    
+
     render(){
         const testResultsRendered = 
             this.props && 
@@ -25,7 +40,8 @@ export class ProgressDisplay extends React.Component<ProgressDisplayProps,any> {
                 <h2>
                     תרגולים קודמים
                 </h2>
-                <div>
+                
+                <div className="test-results-list">
                     {testResultsRendered}
                 </div>                
                 <Button 
@@ -44,10 +60,13 @@ export class ProgressDisplay extends React.Component<ProgressDisplayProps,any> {
             minute: "2-digit",
         };
         return(
-        <div key={testResult.practiceDate.toString()}>
+        <div key={testResult.practiceDate.toString()} >
             <Accordion>
                 <Accordion.Toggle as={Button} variant="link" eventKey={index.toString()}>
-                    {new Date(testResult.practiceDate).toLocaleDateString("en-us", dateFormatOptions)}
+                    <div className="progress-item">
+                        {this.ChartContainer(testResult)}
+                        {new Date(testResult.practiceDate).toLocaleDateString("en-us", dateFormatOptions)}                        
+                    </div>                    
                 </Accordion.Toggle>
                 <Accordion.Collapse eventKey={index.toString()}>
                     <div className="progress-display-details-container">
@@ -72,5 +91,30 @@ export class ProgressDisplay extends React.Component<ProgressDisplayProps,any> {
             </Accordion>                      
         </div>
         )
+    }
+
+    ChartContainer = (testResult: TestResults) => {
+
+        let data = [
+            { category: 'נכונות', value: testResult.wordsWithCorrectAnswers.length },
+            { category: 'לא נכונות', value: testResult.wordsWithWrongAnswer.length },
+            { category: 'לא נענו', value: testResult.totalNumberOfQuestions - (testResult.wordsWithWrongAnswer.length + testResult.wordsWithCorrectAnswers.length)}
+        ]
+        return (
+        <Chart seriesColors={['green', 'red', 'gray']} style={
+            { 
+                width: 180, 
+                height: 150,
+                position: 'inherit'
+            }}>
+          <ChartArea background="transparent" />
+          <ChartLegend position="left" />
+          <ChartSeries>
+            <ChartSeriesItem type="donut" data={data} field="value" categoryField="category" >
+                <ChartSeriesLabels color="#fff" background="none" content={(d) => d.value} />
+            </ChartSeriesItem>
+          </ChartSeries>
+        </Chart>
+      );
     }
 }
