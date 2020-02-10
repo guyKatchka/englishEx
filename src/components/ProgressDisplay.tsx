@@ -41,14 +41,15 @@ export class ProgressDisplay extends React.Component<ProgressDisplayProps,any> {
                     תרגולים קודמים
                 </h2>
                 
-                <div className="test-results-list">
-                    {testResultsRendered}
-                </div>                
                 <Button 
                     variant="outline-primary"
                     onClick={() => this.props.onBackClick()}>
                         חזור
                 </Button>
+                
+                <div className="test-results-list">
+                    {testResultsRendered}
+                </div>                
             </div>
         )
     }    

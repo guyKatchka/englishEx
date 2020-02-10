@@ -1,5 +1,6 @@
 import React from 'react';
 import Button from 'react-bootstrap/Button';
+import Spinner from 'react-bootstrap/Spinner'
 import { TestQuestion } from './TestQuestion';
 
 export interface TestQuestionProps{
@@ -21,8 +22,8 @@ export class AnswerOption{
 
 export interface TestQuestionState{
     testQuestionOptions:Array<AnswerOption>,
-    buttonsDisabled:boolean,
-    answerFeedbackText:string
+    answerFeedbackText:string,
+    isCorrectAnswerClicked:boolean
 }
 
 export class TestQuestionPresentation extends React.Component<TestQuestionProps,TestQuestionState>{
@@ -34,8 +35,8 @@ export class TestQuestionPresentation extends React.Component<TestQuestionProps,
             testQuestionOptions : this.props.testQuestion.answerOptions.map((word:string) => 
                  new AnswerOption(word, this.props.testQuestion.correctTranslation === word)
             ),
-            buttonsDisabled: false,
-            answerFeedbackText: ''
+            answerFeedbackText: '',
+            isCorrectAnswerClicked: false
         }
     }
 
@@ -50,12 +51,13 @@ export class TestQuestionPresentation extends React.Component<TestQuestionProps,
                             key={answerOption.word + "_" + answerOptionIndex}
                             bsPrefix={this.getAnswerOptionBackground(answerOption)} 
                             onClick={(e: any) => this.clickOnWordOption(answerOption, answerOptionIndex)}
-                            disabled={this.state.buttonsDisabled}>
+                            disabled={this.state.isCorrectAnswerClicked}>
                                 {answerOption.word}
                         </Button>)
                     }
                     <div className={"words-test-answer-feedback"}>
                         {this.state.answerFeedbackText}
+                        {this.state.isCorrectAnswerClicked ? <Spinner animation="border" variant="success" /> : null}
                     </div>
                 </div>                
             </div>
@@ -74,7 +76,7 @@ export class TestQuestionPresentation extends React.Component<TestQuestionProps,
 
         this.setState({
             answerFeedbackText: answerOption.isCorrectTranslation ? "נכון!" : "נסה שוב",
-            buttonsDisabled: answerOption.isCorrectTranslation ? true : false
+            isCorrectAnswerClicked: answerOption.isCorrectTranslation ? true : false
         })
         
         setTimeout(
