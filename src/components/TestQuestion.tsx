@@ -1,5 +1,5 @@
-import { shuffleArray } from '../utils/utils';
 import './TestQuestion.css';
+import { shuffle } from 'lodash';
 
 export class TestQuestion{
     wordToTranslate: string;
@@ -12,7 +12,7 @@ export class TestQuestion{
         this.correctTranslation = correctTranslation;
         
         otherOptions.push(correctTranslation);
-        this.answerOptions = shuffleArray(otherOptions);
+        this.answerOptions = shuffle(otherOptions);
         this.isClicked = false;
     }   
     

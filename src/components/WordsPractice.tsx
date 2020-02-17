@@ -3,11 +3,10 @@ import axios from 'axios';
 import Button from 'react-bootstrap/Button';
 import { WordsListByDates} from './WordsList';
 import { WordsTest, TestResults } from './WordsTest';
-import { shuffleArray } from '../utils/utils';
 import { TestQuestion } from './TestQuestion';
 import { WeeklyWordsObject, PracticeWord } from '../Interfaces/words-interfaces';
 import { ProgressDisplay } from './ProgressDisplay';
-import { findIndex, remove, flatMap } from 'lodash';
+import { findIndex, remove, flatMap, shuffle } from 'lodash';
 
 export interface WordsPracticeState{
     weeklyWords: Array<WeeklyWordsObject>;
@@ -167,11 +166,11 @@ export class WordsPractice extends React.Component<any,WordsPracticeState> {
 
             let otherOptions : Array<string> = words.map((w :PracticeWord) => w.heb); // get all hebrew words                                
             otherOptions.splice(i, 1); // remove the correct translation
-            otherOptions = shuffleArray(otherOptions);
+            otherOptions = shuffle(otherOptions);
             otherOptions.splice(3); // take only 3 options
             questions.push(new TestQuestion(englishWordToTranslate, correctHebrewTranslation, otherOptions));
         }
 
-        return questions;
+        return shuffle(questions);
     }    
 }

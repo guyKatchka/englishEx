@@ -42,7 +42,7 @@ export class WordsTest extends React.Component<WordsTestsProps,WordsTestState> {
                 <div className="words-test-question">
                    <TestQuestionPresentation
                         key={this.state.currentQuestionIndex} 
-                        answerQuestionFunc={(word :string) => this.answerQuestion(word)}
+                        answerQuestionFunc={this.answerQuestion}
                         testQuestion={this.state.currentQuestion}>
                     </TestQuestionPresentation> 
                 </div>
@@ -51,8 +51,7 @@ export class WordsTest extends React.Component<WordsTestsProps,WordsTestState> {
         )
     }
     
-    answerQuestion(word: string){
-        const isCorrectAnswer = this.props.questions[this.state.currentQuestionIndex].isCorrectAnswer(word);
+    answerQuestion = (word: string, isCorrectAnswer: boolean) =>{
         this.state.testResults.addAnswerStats(isCorrectAnswer, word);
 
         if (isCorrectAnswer){

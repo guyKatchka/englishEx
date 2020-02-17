@@ -67,20 +67,20 @@ export class ProgressDisplay extends React.Component<ProgressDisplayProps,any> {
                 <Accordion.Collapse eventKey={index.toString()}>
                     <div className="progress-display-details-container">
                         <div>
-                            <span className="progress-display-correct-words-title">
-                                תשובות נכונות:  
-                            </span>
                             <span className="progress-display-correct-words-list">
-                                {testResult.wordsWithCorrectAnswers.join(",")}
+                                {testResult.wordsWithCorrectAnswers.join(", ")}
                             </span>
+                            <span className="progress-display-correct-words-title">
+                                :תשובות נכונות
+                            </span>                            
                         </div>
                         <div>
-                            <span className="progress-display-correct-words-title">
-                                מילים לא נכונות: 
-                            </span>
                             <span className="progress-display-wrong-words-list">
-                                {testResult.wordsWithWrongAnswer.join(",")}
+                                {testResult.wordsWithWrongAnswer.join(", ")}
                             </span>
+                            <span className="progress-display-correct-words-title">
+                                :מילים לא נכונות 
+                            </span>                            
                         </div>
                     </div>                            
                 </Accordion.Collapse>  

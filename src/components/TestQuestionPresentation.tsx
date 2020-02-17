@@ -4,7 +4,7 @@ import Spinner from 'react-bootstrap/Spinner'
 import { TestQuestion } from './TestQuestion';
 
 export interface TestQuestionProps{
-    answerQuestionFunc: (word :string) => void,
+    answerQuestionFunc: (word :string, isCorrectAnswer: boolean) => void,
     testQuestion:TestQuestion
 }
 
@@ -50,7 +50,7 @@ export class TestQuestionPresentation extends React.Component<TestQuestionProps,
                             variant="outline-secondary" 
                             key={answerOption.word + "_" + answerOptionIndex}
                             bsPrefix={this.getAnswerOptionBackground(answerOption)} 
-                            onClick={(e: any) => this.clickOnWordOption(answerOption, answerOptionIndex)}
+                            onClick={(e: any) => this.clickOnWordOption(answerOption, answerOptionIndex, this.props.testQuestion.wordToTranslate)}
                             disabled={this.state.isCorrectAnswerClicked}>
                                 {answerOption.word}
                         </Button>)
@@ -69,7 +69,7 @@ export class TestQuestionPresentation extends React.Component<TestQuestionProps,
         return answerOption.isCorrectTranslation ? 'word-correct-answer-background' : 'word-wrong-answer-background';        
     }
 
-    clickOnWordOption = (answerOption: AnswerOption, answerOptionIndex: number) => {
+    clickOnWordOption = (answerOption: AnswerOption, answerOptionIndex: number, wordToTranslate: string) => {
         let testQuestionOptions = this.state.testQuestionOptions;
         testQuestionOptions[answerOptionIndex].isClicked = true;
         this.setState({testQuestionOptions});
@@ -80,7 +80,7 @@ export class TestQuestionPresentation extends React.Component<TestQuestionProps,
         })
         
         setTimeout(
-            () => this.props.answerQuestionFunc(answerOption.word),
+            () => this.props.answerQuestionFunc(wordToTranslate, answerOption.isCorrectTranslation),
             answerOption.isCorrectTranslation ? 1200 : 0);
     }
 
