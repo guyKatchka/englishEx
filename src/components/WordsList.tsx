@@ -5,6 +5,7 @@ import { WeeklyWordsObject } from '../Interfaces/words-interfaces';
 interface WordsListProps{
     weeklyWords: Array<WeeklyWordsObject>;
     showPreviousWords:boolean;
+    onWordsPracticeSelection: (wordsDate: Date) => void;
 }
 
 export class WordsListByDates extends React.Component<WordsListProps,any> {

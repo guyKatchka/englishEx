@@ -7,6 +7,8 @@ import { shuffleArray } from '../utils/utils';
 import { TestQuestion } from './TestQuestion';
 import { WeeklyWordsObject, PracticeWord } from '../Interfaces/words-interfaces';
 import { ProgressDisplay } from './ProgressDisplay';
+import { findIndex } from 'lodash';
+import Moment from 'react-moment';
 
 export interface WordsPracticeState{
     weeklyWords: Array<WeeklyWordsObject>;
@@ -16,6 +18,7 @@ export interface WordsPracticeState{
     questions: Array<TestQuestion>;
     showPreviousWords: boolean;
     showProgress: boolean;
+    wordsToPracticeIndex: number;
 }
 
 const testHistoryLocalStorageKey = "TestResultsHistory";
@@ -33,7 +36,8 @@ export class WordsPractice extends React.Component<any,WordsPracticeState> {
             testResultsHistory: testHistory,
             questions: [],
             showPreviousWords: false,
-            showProgress: false
+            showProgress: false,
+            wordsToPracticeIndex: 0
         };
         axios.get(`./weeklyWords.json`)
         .then(res => {
@@ -89,11 +93,23 @@ export class WordsPractice extends React.Component<any,WordsPracticeState> {
             this.state.testResultsHistory && this.state.testResultsHistory.length ?    
                 <Button variant="outline-secondary" onClick={() => this.showResults()}>הצג תוצאות קודמות</Button> :
                 null;
+        
+        const selectedDateToPractice = this.state.weeklyWords && this.state.weeklyWords[this.state.wordsToPracticeIndex] && this.state.weeklyWords[this.state.wordsToPracticeIndex].weekDate;
+        const presentWhichDateTheTestIs = selectedDateToPractice ?
+            (<div>(<Moment format="DD/MM/YYYY" date={selectedDateToPractice}></Moment>מילים מ)</div>) :
+            '';
+        
         return (
             <div>
-                <WordsListByDates weeklyWords={this.state.weeklyWords} showPreviousWords={this.state.showPreviousWords}></WordsListByDates>                
+                <WordsListByDates 
+                    weeklyWords={this.state.weeklyWords} 
+                    showPreviousWords={this.state.showPreviousWords}
+                    onWordsPracticeSelection={this.onWordsPracticeSelection}></WordsListByDates>                
                 <div>
-                    <Button variant="outline-primary" onClick={() => this.startTest()}>התחל מבחן!</Button>
+                    <Button variant="outline-primary" onClick={() => this.startTest()}>
+                        !התחל מבחן
+                    {presentWhichDateTheTestIs}
+                    </Button>
                     {showPreviousWordsButton}
                     {showProgressButton}
                 </div>                
@@ -101,8 +117,7 @@ export class WordsPractice extends React.Component<any,WordsPracticeState> {
         ); 
     }
 
-    showPreviousWords = () => this.setState({showPreviousWords: true})
-    
+    showPreviousWords = () => this.setState({showPreviousWords: true})    
 
     hidePreviousWords = () => this.setState({showPreviousWords: false})
 
@@ -111,7 +126,8 @@ export class WordsPractice extends React.Component<any,WordsPracticeState> {
     hideResults = () => this.setState({showPreviousWords: false, showProgress: false})
     
     startTest = () => {
-        const questions = this.buildQuestions(this.state.weeklyWords[0].words);
+        const index = this.state.wordsToPracticeIndex;
+        const questions = this.buildQuestions(this.state.weeklyWords[index].words);
         this.setState({isTesting: true, questions});
     }
 
@@ -128,7 +144,12 @@ export class WordsPractice extends React.Component<any,WordsPracticeState> {
         window.localStorage.setItem(testHistoryLocalStorageKey, JSON.stringify(testResultsHistory2));
     }
 
-    buildQuestions(words: Array<PracticeWord>){
+    onWordsPracticeSelection(selectedWordsDate: Date){
+        const indexOfSelectedWordsDate = findIndex(this.state.weeklyWords, (words: WeeklyWordsObject) => words.weekDate === selectedWordsDate);
+        this.setState({wordsToPracticeIndex: indexOfSelectedWordsDate});
+    }
+
+    private buildQuestions(words: Array<PracticeWord>){
         let questions :Array<TestQuestion> = [];
 
         // build english to hebrew questions
@@ -145,5 +166,5 @@ export class WordsPractice extends React.Component<any,WordsPracticeState> {
         }
 
         return questions;
-    }
+    }    
 }
