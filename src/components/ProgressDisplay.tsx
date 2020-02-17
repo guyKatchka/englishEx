@@ -9,13 +9,8 @@ import {
     ChartSeries,
     ChartSeriesItem,
     ChartArea,
-    ChartTooltip,
     ChartSeriesLabels,
-    TooltipPoint,
-    TooltipContext,
-    SharedTooltipContext
   } from '@progress/kendo-react-charts';
-import { inherits } from 'util';
 
 export interface ProgressDisplayProps{
     onBackClick: () => void;

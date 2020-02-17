@@ -1,0 +1,22 @@
+.words-list-select-words-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-bottom: 11px;
+}
+
+.words-list-select-words-title{
+    margin-right: 6px;
+}
+
+.words-list-map{
+    padding: 0;
+}
+
+.k-checkbox:checked:focus,
+.k-checkbox:checked{
+    border-color: #007bff !important;
+    color: #fff;
+    background-color: #007bff !important;
+    box-shadow: 0 0 0 1px black;
+}

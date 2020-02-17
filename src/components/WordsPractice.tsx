@@ -7,8 +7,7 @@ import { shuffleArray } from '../utils/utils';
 import { TestQuestion } from './TestQuestion';
 import { WeeklyWordsObject, PracticeWord } from '../Interfaces/words-interfaces';
 import { ProgressDisplay } from './ProgressDisplay';
-import { findIndex } from 'lodash';
-import Moment from 'react-moment';
+import { findIndex, remove, flatMap } from 'lodash';
 
 export interface WordsPracticeState{
     weeklyWords: Array<WeeklyWordsObject>;
@@ -19,6 +18,7 @@ export interface WordsPracticeState{
     showPreviousWords: boolean;
     showProgress: boolean;
     wordsToPracticeIndex: number;
+    selectedDates: Date[];
 }
 
 const testHistoryLocalStorageKey = "TestResultsHistory";
@@ -37,7 +37,8 @@ export class WordsPractice extends React.Component<any,WordsPracticeState> {
             questions: [],
             showPreviousWords: false,
             showProgress: false,
-            wordsToPracticeIndex: 0
+            wordsToPracticeIndex: 0,
+            selectedDates: []
         };
         axios.get(`./weeklyWords.json`)
         .then(res => {
@@ -49,6 +50,7 @@ export class WordsPractice extends React.Component<any,WordsPracticeState> {
                     availableDates: weeklyWords.map((w: WeeklyWordsObject) => w.weekDate),
                     isTesting: false,
                     testResultsHistory: testHistory,
+                    selectedDates: [weeklyWords[0].weekDate]
                 });
         });
     }
@@ -94,21 +96,16 @@ export class WordsPractice extends React.Component<any,WordsPracticeState> {
                 <Button variant="outline-secondary" onClick={() => this.showResults()}>הצג תוצאות קודמות</Button> :
                 null;
         
-        const selectedDateToPractice = this.state.weeklyWords && this.state.weeklyWords[this.state.wordsToPracticeIndex] && this.state.weeklyWords[this.state.wordsToPracticeIndex].weekDate;
-        const presentWhichDateTheTestIs = selectedDateToPractice ?
-            (<div>(<Moment format="DD/MM/YYYY" date={selectedDateToPractice}></Moment>מילים מ)</div>) :
-            '';
-        
         return (
             <div>
                 <WordsListByDates 
                     weeklyWords={this.state.weeklyWords} 
                     showPreviousWords={this.state.showPreviousWords}
-                    onWordsPracticeSelection={this.onWordsPracticeSelection}></WordsListByDates>                
+                    onWordsPracticeSelection={this.onWordsPracticeSelection}
+                    selectedDates={this.state.selectedDates}></WordsListByDates>                
                 <div>
                     <Button variant="outline-primary" onClick={() => this.startTest()}>
                         !התחל מבחן
-                    {presentWhichDateTheTestIs}
                     </Button>
                     {showPreviousWordsButton}
                     {showProgressButton}
@@ -126,8 +123,7 @@ export class WordsPractice extends React.Component<any,WordsPracticeState> {
     hideResults = () => this.setState({showPreviousWords: false, showProgress: false})
     
     startTest = () => {
-        const index = this.state.wordsToPracticeIndex;
-        const questions = this.buildQuestions(this.state.weeklyWords[index].words);
+        const questions = this.buildQuestions(this.getSelectedWordsToPractice());
         this.setState({isTesting: true, questions});
     }
 
@@ -144,10 +140,21 @@ export class WordsPractice extends React.Component<any,WordsPracticeState> {
         window.localStorage.setItem(testHistoryLocalStorageKey, JSON.stringify(testResultsHistory2));
     }
 
-    onWordsPracticeSelection(selectedWordsDate: Date){
+    onWordsPracticeSelection = (selectedWordsDate: Date) => {
         const indexOfSelectedWordsDate = findIndex(this.state.weeklyWords, (words: WeeklyWordsObject) => words.weekDate === selectedWordsDate);
-        this.setState({wordsToPracticeIndex: indexOfSelectedWordsDate});
+        const newSelectedDates = this.state.selectedDates;
+        newSelectedDates.includes(selectedWordsDate) ? remove(newSelectedDates, (date:Date) => date === selectedWordsDate) : newSelectedDates.push(selectedWordsDate);
+        this.setState(
+            {
+                wordsToPracticeIndex: indexOfSelectedWordsDate,
+                selectedDates: newSelectedDates
+            });
     }
+
+    private getSelectedWordsToPractice = ():PracticeWord[] => 
+            flatMap( 
+                this.state.weeklyWords.filter((wordObj:WeeklyWordsObject) => this.state.selectedDates.includes(wordObj.weekDate)),
+                (wordObj:WeeklyWordsObject) => wordObj.words);
 
     private buildQuestions(words: Array<PracticeWord>){
         let questions :Array<TestQuestion> = [];
