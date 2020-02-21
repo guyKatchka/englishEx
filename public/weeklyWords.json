@@ -1,5 +1,38 @@
 [
     {
+        "weekDate": "2020-02-21T08:15:30.000Z",
+        "words": [
+            {
+                "eng": "Learn",
+                "heb": "ללמוד"
+            },
+            {
+                "eng": "Choose",
+                "heb": "לבחור"
+            },
+            {
+                "eng": "Bill",
+                "heb": "חשבון"
+            },
+            {
+                "eng": "Customer",
+                "heb": "לקוח"
+            },
+            {
+                "eng": "Question",
+                "heb": "שאלה"
+            },
+            {
+                "eng": "Answer",
+                "heb": "תשובה"
+            },
+            {
+                "eng": "Correct",
+                "heb": "נכון"
+            }
+        ]
+    },
+    {
         "weekDate": "2020-01-31T08:15:30.000Z",
         "words": [
             {
