@@ -41,7 +41,7 @@ export class WordsPractice extends React.Component<any,WordsPracticeState> {
         };
         axios.get(`./weeklyWords.json`)
         .then(res => {
-            const weeklyWords : Array<WeeklyWordsObject> = res.data;
+            const weeklyWords : Array<WeeklyWordsObject> = (res && res.data) || [];
 
             this.setState(
                 { 
@@ -49,7 +49,7 @@ export class WordsPractice extends React.Component<any,WordsPracticeState> {
                     availableDates: weeklyWords.map((w: WeeklyWordsObject) => w.weekDate),
                     isTesting: false,
                     testResultsHistory: testHistory,
-                    selectedDates: [weeklyWords[0].weekDate]
+                    selectedDates: weeklyWords.length > 0 ? [weeklyWords[0].weekDate] : []
                 });
         });
     }
