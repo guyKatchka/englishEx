@@ -1,5 +1,49 @@
 [
     {
+        "weekDate": "2020-06-07T08:15:30.000Z",
+        "words": [
+            {
+                "eng": "Answer",
+                "heb": "לענות / תשובה"
+            },
+            {
+                "eng": "According",
+                "heb": "בהתאם"
+            },
+            {
+                "eng": "Thing",
+                "heb": "משהו"
+            },
+            {
+                "eng": "Teenager",
+                "heb": "מתבגר / נער"
+            },
+            {
+                "eng": "Must",
+                "heb": "חייב"
+            },
+            {
+                "eng": "Bring",
+                "heb": "להביא"
+            },
+            {
+                "eng": "Center",
+                "heb": "מרכז"
+            },
+            {
+                "eng": "Letter",
+                "heb": "מכתב / אות"
+            },
+            {
+                "eng": "West",
+                "heb": "מערב"
+            },
+            {
+                "eng": "East",
+                "heb": "מזרח"
+            }
+        ]
+    },{
         "weekDate": "2020-05-25T08:15:30.000Z",
         "words": [
             {
