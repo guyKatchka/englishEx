@@ -1,5 +1,45 @@
 [
     {
+        "weekDate": "2020-12-04T08:15:30.000Z",
+        "words": [
+            {
+                "eng": "special",
+                "heb": "מיוחד"
+            },
+            {
+                "eng": "study",
+                "heb": "ללמוד"
+            },
+            {
+                "eng": "teach",
+                "heb": "מלמד / ללמד"
+            },
+            {
+                "eng": "subject",
+                "heb": "נושא"
+            },
+            {
+                "eng": "usually",
+                "heb": "בדרך כלל"
+            },
+            {
+                "eng": "use",
+                "heb": "להשתמש"
+            },
+            {
+                "eng": "also",
+                "heb": "גם"
+            },
+            {
+                "eng": "important",
+                "heb": "חשוב"
+            },
+            {
+                "eng": "build",
+                "heb": "לבנות"
+            }
+        ]
+    },{
         "weekDate": "2020-06-07T08:15:30.000Z",
         "words": [
             {
