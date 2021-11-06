@@ -1,260 +1,31 @@
 [
     {
-        "weekDate": "2020-12-04T08:15:30.000Z",
+        "weekDate": "2021-11-05T08:15:30.000Z",
         "words": [
             {
-                "eng": "special",
-                "heb": "מיוחד"
+                "eng": "Creativity",
+                "heb": "יצירתיות"
             },
             {
                 "eng": "study",
-                "heb": "ללמוד"
+                "heb": "ללמוד \ מחקר"
             },
             {
-                "eng": "teach",
-                "heb": "מלמד / ללמד"
+                "eng": "increase",
+                "heb": "להגדיל"
             },
             {
-                "eng": "subject",
-                "heb": "נושא"
+                "eng": "decrease",
+                "heb": "להקטין"
             },
             {
-                "eng": "usually",
-                "heb": "בדרך כלל"
+                "eng": "test",
+                "heb": "מבחן"
             },
             {
-                "eng": "use",
-                "heb": "להשתמש"
-            },
-            {
-                "eng": "also",
-                "heb": "גם"
-            },
-            {
-                "eng": "important",
-                "heb": "חשוב"
-            },
-            {
-                "eng": "build",
-                "heb": "לבנות"
+                "eng": "among",
+                "heb": "מבין"
             }
         ]
-    },{
-        "weekDate": "2020-06-07T08:15:30.000Z",
-        "words": [
-            {
-                "eng": "Answer",
-                "heb": "לענות / תשובה"
-            },
-            {
-                "eng": "According",
-                "heb": "בהתאם"
-            },
-            {
-                "eng": "Thing",
-                "heb": "משהו"
-            },
-            {
-                "eng": "Teenager",
-                "heb": "מתבגר / נער"
-            },
-            {
-                "eng": "Must",
-                "heb": "חייב"
-            },
-            {
-                "eng": "Bring",
-                "heb": "להביא"
-            },
-            {
-                "eng": "Center",
-                "heb": "מרכז"
-            },
-            {
-                "eng": "Letter",
-                "heb": "מכתב / אות"
-            },
-            {
-                "eng": "West",
-                "heb": "מערב"
-            },
-            {
-                "eng": "East",
-                "heb": "מזרח"
-            }
-        ]
-    },{
-        "weekDate": "2020-05-25T08:15:30.000Z",
-        "words": [
-            {
-                "eng": "Travel",
-                "heb": "לטייל/טיול"
-            },
-            {
-                "eng": "If",
-                "heb": "אם"
-            },
-            {
-                "eng": "Some",
-                "heb": "איזשהו"
-            },
-            {
-                "eng": "South",
-                "heb": "דרום"
-            },
-            {
-                "eng": "North",
-                "heb": "צפון"
-            },
-            {
-                "eng": "Here",
-                "heb": "כאן"
-            }
-        ]
-    },
-    {
-        "weekDate": "2020-03-06T08:15:30.000Z",
-        "words": [
-            {
-                "eng": "Busy",
-                "heb": "עסוק/עמוס"
-            },
-            {
-                "eng": "Expect",
-                "heb": "לצפות"
-            },
-            {
-                "eng": "Never",
-                "heb": "אף פעם"
-            },
-            {
-                "eng": "Always",
-                "heb": "תמיד"
-            },
-            {
-                "eng": "Success",
-                "heb": "להצליח"
-            }
-        ]
-    },
-    {
-        "weekDate": "2020-02-21T08:15:30.000Z",
-        "words": [
-            {
-                "eng": "Learn",
-                "heb": "ללמוד"
-            },
-            {
-                "eng": "Choose",
-                "heb": "לבחור"
-            },
-            {
-                "eng": "Bill",
-                "heb": "חשבון"
-            },
-            {
-                "eng": "Customer",
-                "heb": "לקוח"
-            },
-            {
-                "eng": "Question",
-                "heb": "שאלה"
-            },
-            {
-                "eng": "Answer",
-                "heb": "תשובה"
-            },
-            {
-                "eng": "Correct",
-                "heb": "נכון"
-            }
-        ]
-    },
-    {
-        "weekDate": "2020-01-31T08:15:30.000Z",
-        "words": [
-            {
-                "eng": "List",
-                "heb": "רשימה"
-            },
-            {
-                "eng": "Decide",
-                "heb": "להחליט"
-            },
-            {
-                "eng": "Most",
-                "heb": "הכי"
-            },
-            {
-                "eng": "Important",
-                "heb": "חשוב"
-            },
-            {
-                "eng": "Use",
-                "heb": "להשתמש"
-            }
-        ]
-    },
-    {
-        "weekDate": "2020-01-24T08:15:30.000Z",
-        "words": [
-            {
-                "eng": "Animal",
-                "heb": "חיה"
-            },
-            {
-                "eng": "Think",
-                "heb": "לחשוב"
-            },
-            {
-                "eng": "Keep",
-                "heb": "לשמור"
-            },
-            {
-                "eng": "Clean",
-                "heb": "נקי"
-            },
-            {
-                "eng": "Into",
-                "heb": "לתוך"
-            },
-            {
-                "eng": "Understand",
-                "heb": "להבין"
-            }
-        ]
-    },
-    {
-        "weekDate": "2020-01-17T08:15:30.000Z",
-        "words": [
-            {
-                "eng": "What",
-                "heb": "מה"
-            },
-            {
-                "eng": "When",
-                "heb": "מתי"
-            },
-            {
-                "eng": "Where",
-                "heb": "איפה"
-            },
-            {
-                "eng": "Who",
-                "heb": "מי"
-            },
-            {
-                "eng": "How",
-                "heb": "איך"
-            },
-            {
-                "eng": "Which",
-                "heb": "איזה"
-            },
-            {
-                "eng": "Why",
-                "heb": "למה"
-            }
-        ]
-    }    
+    }
 ]
