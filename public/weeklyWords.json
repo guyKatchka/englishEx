@@ -1,5 +1,41 @@
 [
     {
+        "weekDate": "2021-11-12T08:15:30.000Z",
+        "words": [
+            {
+                "eng": "Purpose",
+                "heb": "כוונה / מטרה"
+            },
+            {
+                "eng": "Register",
+                "heb": "להרשם"
+            },
+            {
+                "eng": "Service",
+                "heb": "שירות"
+            },
+            {
+                "eng": "Volunteer",
+                "heb": "מתנדב"
+            },
+            {
+                "eng": "Active",
+                "heb": "פעיל"
+            },
+            {
+                "eng": "Form",
+                "heb": "טופס"
+            },
+            {
+                "eng": "Pupil",
+                "heb": "תלמיד"
+            },
+            {
+                "eng": "Adult",
+                "heb": "מבוגר"
+            }
+        ]
+    }    ,{
         "weekDate": "2021-11-05T08:15:30.000Z",
         "words": [
             {
@@ -7,23 +43,23 @@
                 "heb": "יצירתיות"
             },
             {
-                "eng": "study",
+                "eng": "Study",
                 "heb": "ללמוד / מחקר"
             },
             {
-                "eng": "increase",
+                "eng": "Increase",
                 "heb": "להגדיל"
             },
             {
-                "eng": "decrease",
+                "eng": "Decrease",
                 "heb": "להקטין"
             },
             {
-                "eng": "test",
+                "eng": "Test",
                 "heb": "מבחן"
             },
             {
-                "eng": "among",
+                "eng": "Among",
                 "heb": "מבין"
             }
         ]
