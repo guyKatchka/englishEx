@@ -1,38 +1,26 @@
 [
     {
-        "weekDate": "2021-11-12T08:15:30.000Z",
+        "weekDate": "2021-11-26T08:15:30.000Z",
         "words": [
             {
-                "eng": "Purpose",
-                "heb": "כוונה / מטרה"
+                "eng": "Subject",
+                "heb": "נושא"
             },
             {
-                "eng": "Register",
-                "heb": "להרשם"
+                "eng": "Expert",
+                "heb": "מומחה"
             },
             {
-                "eng": "Service",
-                "heb": "שירות"
+                "eng": "Survey",
+                "heb": "סקר"
             },
             {
-                "eng": "Volunteer",
-                "heb": "מתנדב"
+                "eng": "Habit",
+                "heb": "הרגל"
             },
             {
-                "eng": "Active",
-                "heb": "פעיל"
-            },
-            {
-                "eng": "Form",
-                "heb": "טופס"
-            },
-            {
-                "eng": "Pupil",
-                "heb": "תלמיד"
-            },
-            {
-                "eng": "Adult",
-                "heb": "מבוגר"
+                "eng": "Illness",
+                "heb": "מחלה"
             }
         ]
     }    ,{
