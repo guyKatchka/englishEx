@@ -1,5 +1,38 @@
 [
     {
+        "weekDate": "2022-01-14T08:15:30.000Z",
+        "words": [
+            {
+                "eng": "Program",
+                "heb": "תוכנית"
+            },
+            {
+                "eng": "Participate",
+                "heb": "להשתתף"
+            },
+            {
+                "eng": "However",
+                "heb": "למרות זאת"
+            },
+            {
+                "eng": "Prefer",
+                "heb": "מעדיף"
+            },
+            {
+                "eng": "Center",
+                "heb": "מרכז"
+            },
+            {
+                "eng": "City",
+                "heb": "עיר"
+            },
+            {
+                "eng": "Public",
+                "heb": "ציבור / ציבורי"
+            }
+        ]
+    },
+    {
         "weekDate": "2021-11-26T08:15:30.000Z",
         "words": [
             {
