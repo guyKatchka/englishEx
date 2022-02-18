@@ -1,5 +1,45 @@
 [
     {
+        "weekDate": "2022-02-18T08:15:30.000Z",
+        "words": [
+            {
+                "eng": "Drill",
+                "heb": "לקדוח"
+            },
+            {
+                "eng": "Hearing aid",
+                "heb": "מכשיר שמיעה"
+            },
+            {
+                "eng": "Cushioning",
+                "heb": "ריפוד"
+            },
+            {
+                "eng": "Ventilation",
+                "heb": "אוורור"
+            },
+            {
+                "eng": "Available",
+                "heb": "פנוי"
+            },
+            {
+                "eng": "Accurate",
+                "heb": "מדוייק"
+            },
+            {
+                "eng": "Climate",
+                "heb": "מזג אוויר"
+            },
+            {
+                "eng": "Cordless",
+                "heb": "אלחוטי"
+            },
+            {
+                "eng": "Operate",
+                "heb": "לתפעל"
+            }
+        ]
+    },{
         "weekDate": "2022-01-21T08:15:30.000Z",
         "words": [
             {
