@@ -1,42 +1,26 @@
 [
     {
-        "weekDate": "2022-02-18T08:15:30.000Z",
+        "weekDate": "2022-03-25T08:15:30.000Z",
         "words": [
             {
-                "eng": "Drill",
-                "heb": "לקדוח"
+                "eng": "benefits",
+                "heb": "הטבות"
             },
             {
-                "eng": "Hearing aid",
-                "heb": "מכשיר שמיעה"
+                "eng": "international",
+                "heb": "בינלאומי"
             },
             {
-                "eng": "Cushioning",
-                "heb": "ריפוד"
+                "eng": "participate",
+                "heb": "להשתתף"
             },
             {
-                "eng": "Ventilation",
-                "heb": "אוורור"
+                "eng": "pollution",
+                "heb": "זיהום אוויר"
             },
             {
-                "eng": "Available",
-                "heb": "פנוי"
-            },
-            {
-                "eng": "Accurate",
-                "heb": "מדוייק"
-            },
-            {
-                "eng": "Climate",
-                "heb": "אקלים"
-            },
-            {
-                "eng": "Cordless",
-                "heb": "אלחוטי"
-            },
-            {
-                "eng": "Operate",
-                "heb": "לתפעל"
+                "eng": "environment",
+                "heb": "סביבה"
             }
         ]
     },{
