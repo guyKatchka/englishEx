@@ -3,161 +3,56 @@
         "weekDate": "2022-05-06T08:15:30.000Z",
         "words": [
             {
-                "eng": "However",
-                "heb": "למרות זאת"
+                "eng": "Sequence",
+                "heb": "רצף"
             },
             {
-                "eng": "Program",
-                "heb": "תוכנית"
-            },
-            {
-                "eng": "Include",
-                "heb": "מכיל / כולל"
-            },
-            {
-                "eng": "Reaction",
-                "heb": "תגובה"
-            },
-            {
-                "eng": "Brave",
-                "heb": "אמיץ"
-            },
-            {
-                "eng": "Action",
-                "heb": "פעולה"
-            }
-        ]
-    },{
-        "weekDate": "2022-03-25T08:15:30.000Z",
-        "words": [
-            {
-                "eng": "benefits",
-                "heb": "הטבות"
-            },
-            {
-                "eng": "international",
-                "heb": "בינלאומי"
-            },
-            {
-                "eng": "participate",
-                "heb": "להשתתף"
-            },
-            {
-                "eng": "pollution",
-                "heb": "זיהום אוויר"
-            },
-            {
-                "eng": "environment",
-                "heb": "סביבה"
-            }
-        ]
-    },{
-        "weekDate": "2022-01-21T08:15:30.000Z",
-        "words": [
-            {
-                "eng": "Product",
-                "heb": "מוצר"
-            },
-            {
-                "eng": "Like",
-                "heb": "כמו / מחבב"
-            },
-            {
-                "eng": "Root",
-                "heb": "שורש"
-            },
-            {
-                "eng": "Able",
-                "heb": "יכול / מסוגל"
-            },
-            {
-                "eng": "Although",
-                "heb": "למרות"
-            }
-        ]
-    },{
-        "weekDate": "2022-01-14T08:15:30.000Z",
-        "words": [
-            {
-                "eng": "Program",
-                "heb": "תוכנית"
-            },
-            {
-                "eng": "Participate",
-                "heb": "להשתתף"
-            },
-            {
-                "eng": "However",
-                "heb": "למרות זאת"
-            },
-            {
-                "eng": "Prefer",
-                "heb": "מעדיף"
-            },
-            {
-                "eng": "Center",
-                "heb": "מרכז"
-            },
-            {
-                "eng": "City",
-                "heb": "עיר"
-            },
-            {
-                "eng": "Public",
-                "heb": "ציבור / ציבורי"
-            }
-        ]
-    },
-    {
-        "weekDate": "2021-11-26T08:15:30.000Z",
-        "words": [
-            {
-                "eng": "Subject",
-                "heb": "נושא"
-            },
-            {
-                "eng": "Expert",
-                "heb": "מומחה"
-            },
-            {
-                "eng": "Survey",
-                "heb": "סקר"
-            },
-            {
-                "eng": "Habit",
-                "heb": "הרגל"
-            },
-            {
-                "eng": "Illness",
-                "heb": "מחלה"
-            }
-        ]
-    }    ,{
-        "weekDate": "2021-11-05T08:15:30.000Z",
-        "words": [
-            {
-                "eng": "Creativity",
-                "heb": "יצירתיות"
-            },
-            {
-                "eng": "Study",
-                "heb": "ללמוד / מחקר"
+                "eng": "Constant",
+                "heb": "קבוע"
             },
             {
                 "eng": "Increase",
-                "heb": "להגדיל"
+                "heb": "עליה"
+            },
+            {
+                "eng": "Integral",
+                "heb": "בלתי נפרד"
+            },
+            {
+                "eng": "Pollution",
+                "heb": "זיהום"
+            },
+            {
+                "eng": "Held",
+                "heb": "התקיים"
             },
             {
                 "eng": "Decrease",
-                "heb": "להקטין"
+                "heb": "ירידה"
+            }
+        ]
+    },{
+        "weekDate": "2022-11-04T08:15:30.000Z",
+        "words": [
+            {
+                "eng": "Role",
+                "heb": "תפקיד"
             },
             {
-                "eng": "Test",
-                "heb": "מבחן"
+                "eng": "Differs",
+                "heb": "שונה מ"
             },
             {
-                "eng": "Among",
-                "heb": "מבין"
+                "eng": "Majority",
+                "heb": "רב"
+            },
+            {
+                "eng": "Ladder",
+                "heb": "סולם"
+            },
+            {
+                "eng": "Initiative",
+                "heb": "יוזמה"
             }
         ]
     }
