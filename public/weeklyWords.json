@@ -1,58 +1,62 @@
 [
     {
-        "weekDate": "2022-05-06T08:15:30.000Z",
+        "weekDate": "2024-01-05T08:15:30.000Z",
         "words": [
             {
-                "eng": "Sequence",
-                "heb": "רצף"
+                "eng": "Sunday",
+                "heb": "ראשון"
             },
             {
-                "eng": "Constant",
-                "heb": "קבוע"
+                "eng": "Monday",
+                "heb": "שני"
             },
             {
-                "eng": "Increase",
-                "heb": "עליה"
+                "eng": "Tuesday",
+                "heb": "שלישי"
             },
             {
-                "eng": "Integral",
-                "heb": "בלתי נפרד"
+                "eng": "Wednesday",
+                "heb": "רביעי"
             },
             {
-                "eng": "Pollution",
-                "heb": "זיהום"
+                "eng": "Thursday",
+                "heb": "חמישי"
             },
             {
-                "eng": "Held",
-                "heb": "התקיים"
+                "eng": "Friday",
+                "heb": "שישי"
             },
             {
-                "eng": "Decrease",
-                "heb": "ירידה"
+                "eng": "Saturday",
+                "heb": "שבת"
             }
         ]
     },{
-        "weekDate": "2022-11-04T08:15:30.000Z",
+        "weekDate": "2023-29-12T08:15:30.000Z",
         "words": [
             {
-                "eng": "Role",
-                "heb": "תפקיד"
+                "eng": "What",
+                "heb": "מה"
             },
             {
-                "eng": "Differs",
-                "heb": "שונה מ"
+                "eng": "Why",
+                "heb": "למה"
             },
             {
-                "eng": "Majority",
-                "heb": "רב"
+                "eng": "Where",
+                "heb": "איפה"
             },
             {
-                "eng": "Ladder",
-                "heb": "סולם"
+                "eng": "When",
+                "heb": "מתי"
             },
             {
-                "eng": "Initiative",
-                "heb": "יוזמה"
+                "eng": "Which",
+                "heb": "איזה"
+            },
+            {
+                "eng": "How",
+                "heb": "איך"
             }
         ]
     }
