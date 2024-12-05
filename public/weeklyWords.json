@@ -1,94 +1,34 @@
 [
     {
-        "weekDate": "2024-02-23T08:15:30.000Z",
+        "weekDate": "2024-12-05T08:15:30.000Z",
         "words": [
             {
-                "eng": "North",
-                "heb": "צפון"
+                "eng": "What",
+                "heb": "מה"
             },
             {
-                "eng": "South",
-                "heb": "דרוםֿ"
+                "eng": "Why",
+                "heb": "למה"
             },
             {
-                "eng": "East",
-                "heb": "מזרח"
+                "eng": "Where",
+                "heb": "איפה"
             },
             {
-                "eng": "West",
-                "heb": "מערב"
+                "eng": "When",
+                "heb": "מתי"
             },
             {
-                "eng": "Price",
-                "heb": "מחיר"
+                "eng": "Which",
+                "heb": "איזה"
             },
             {
-                "eng": "Kind",
-                "heb": "סוג"
+                "eng": "How",
+                "heb": "איך"
             }
         ]
     },{
-        "weekDate": "2024-02-09T08:15:30.000Z",
-        "words": [
-            {
-                "eng": "Section",
-                "heb": "חלק / קטע"
-            },
-            {
-                "eng": "Answer",
-                "heb": "תשובה"
-            },
-            {
-                "eng": "Salary",
-                "heb": "משכורת"
-            },
-            {
-                "eng": "Manage",
-                "heb": "לנהל"
-            }            
-        ]
-    },{
-        "weekDate": "2024-02-02T08:15:30.000Z",
-        "words": [
-            {
-                "eng": "Earn",
-                "heb": "להרוויח"
-            },
-            {
-                "eng": "Usually",
-                "heb": "בדרך כלל"
-            },
-            {
-                "eng": "Owe",
-                "heb": "חייב (חייב למישהו)"
-            },
-            {
-                "eng": "Keep track",
-                "heb": "לעקוב"
-            }            
-        ]
-    },{
-        "weekDate": "2024-01-19T08:15:30.000Z",
-        "words": [
-            {
-                "eng": "Main",
-                "heb": "מרכזי / ראשי"
-            },
-            {
-                "eng": "Column",
-                "heb": "טור"
-            },
-            {
-                "eng": "May",
-                "heb": "יכול / עלול"
-            },
-            {
-                "eng": "Gain",
-                "heb": "להשיג"
-            }            
-        ]
-    },{
-        "weekDate": "2024-01-12T08:15:30.000Z",
+        "weekDate": "2024-12-04T08:15:30.000Z",
         "words": [
             {
                 "eng": "He",
@@ -128,7 +68,7 @@
             }
         ]
     },{
-        "weekDate": "2024-01-05T08:15:30.000Z",
+        "weekDate": "2024-12-03T08:15:30.000Z",
         "words": [
             {
                 "eng": "Sunday",
@@ -160,31 +100,23 @@
             }
         ]
     },{
-        "weekDate": "2023-29-12T08:15:30.000Z",
+        "weekDate": "2024-12-02T08:15:30.000Z",
         "words": [
             {
-                "eng": "What",
-                "heb": "מה"
+                "eng": "North",
+                "heb": "צפון"
             },
             {
-                "eng": "Why",
-                "heb": "למה"
+                "eng": "South",
+                "heb": "דרוםֿ"
             },
             {
-                "eng": "Where",
-                "heb": "איפה"
+                "eng": "East",
+                "heb": "מזרח"
             },
             {
-                "eng": "When",
-                "heb": "מתי"
-            },
-            {
-                "eng": "Which",
-                "heb": "איזה"
-            },
-            {
-                "eng": "How",
-                "heb": "איך"
+                "eng": "West",
+                "heb": "מערב"
             }
         ]
     }
