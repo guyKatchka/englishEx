@@ -1,5 +1,41 @@
 [
     {
+        "weekDate": "2024-12-13T08:15:30.000Z",
+        "words": [
+            {
+                "eng": "Important",
+                "heb": "חשוב"
+            },
+            {
+                "eng": "Future",
+                "heb": "עתיד"
+            },
+            {
+                "eng": "Past",
+                "heb": "עבר"
+            },
+            {
+                "eng": "Present",
+                "heb": "הווה"
+            },
+            {
+                "eng": "Champion",
+                "heb": "אלוף"
+            },
+            {
+                "eng": "Write",
+                "heb": "לכתוב"
+            },
+            {
+                "eng": "Different",
+                "heb": "שונה"
+            },
+            {
+                "eng": "Perform",
+                "heb": "להופיע"
+            }
+        ]
+    },{
         "weekDate": "2024-12-05T08:15:30.000Z",
         "words": [
             {
