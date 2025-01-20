@@ -1,5 +1,41 @@
 [
     {
+        "weekDate": "2025-01-17T08:15:30.000Z",
+        "words": [
+            {
+                "eng": "Move",
+                "heb": "להזיז / לזוז"
+            },
+            {
+                "eng": "Watch",
+                "heb": "לצפות"
+            },
+            {
+                "eng": "Yesterday",
+                "heb": "אתמול"
+            },
+            {
+                "eng": "Rain",
+                "heb": "גשם"
+            },
+            {
+                "eng": "Make",
+                "heb": "לייצר"
+            },
+            {
+                "eng": "Speed",
+                "heb": "מהירות"
+            },
+            {
+                "eng": "Health",
+                "heb": "בריאות"
+            },
+            {
+                "eng": "Contain",
+                "heb": "מכיל"
+            }
+        ]
+    },{
         "weekDate": "2024-12-13T08:15:30.000Z",
         "words": [
             {
