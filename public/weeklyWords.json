@@ -3,6 +3,38 @@
         "weekDate": "2025-05-02T08:15:30.000Z",
         "words": [
             {
+                "eng": "Too",
+                "heb": "יותר מדי"
+            },
+            {
+                "eng": "Dangerous",
+                "heb": "מסוכן"
+            },
+            {
+                "eng": "Safe",
+                "heb": "בטוח"
+            },
+            {
+                "eng": "With",
+                "heb": "עם"
+            },
+            {
+                "eng": "Recognize",
+                "heb": "לזהות"
+            },
+            {
+                "eng": "Far",
+                "heb": "רחוק"
+            },
+            {
+                "eng": "Same",
+                "heb": "זהה, אותו דבר"
+            }
+        ]
+    },{
+        "weekDate": "2025-05-02T08:15:30.000Z",
+        "words": [
+            {
                 "eng": "See",
                 "heb": "לראות"
             },
